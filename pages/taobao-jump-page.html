@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>跳转淘宝中间页</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; background: #f5f5f5; }
+    .container { background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+    h3 { font-size: 18px; color: #333; }
+    p { word-break: break-all; background: #f0f0f0; padding: 10px; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h3>如需浏览，请长按网址复制后使用浏览器访问：</h3>
+    <p>tbopen://m.taobao.com/tbopen/index.html?&action=ali.open.nav&module=h5&h5Url=https%3A%2F%2Fm.duanqu.com%2F%3F_ariver_appid%3D8251537%26page%3Dplugin-private%253A%252F%252F2021003183669766%252Fpages%252Fwh-coupon-guide%252Findex%253Ffrom%253Dminiapp.taobao%2526channelInfo%253D%257B%2522subSubChannel%2522%253A%2522miniapp.taobao.et%2522%257D%2526alsc_exsrc%253DES0007485972%2526scene%253D0c1ec3d15b6941c29d8cce4e33e5f8ba</p>
+  </div>
+
+  <script>
+    // 尝试跳转淘宝 App
+    setTimeout(function() {
+      window.location.href = "tbopen://m.taobao.com/tbopen/index.html?&action=ali.open.nav&module=h5&h5Url=https%3A%2F%2Fm.duanqu.com%2F%3F_ariver_appid%3D8251537%26page%3Dplugin-private%253A%252F%252F2021003183669766%252Fpages%252Fwh-coupon-guide%252Findex%253Ffrom%253Dminiapp.taobao%2526channelInfo%253D%257B%2522subSubChannel%2522%253A%2522miniapp.taobao.et%2522%257D%2526alsc_exsrc%253DES0007485972%2526scene%253D0c1ec3d15b6941c29d8cce4e33e5f8ba";
+    }, 100);
+
+    // fallback 替换页面内容
+    setTimeout(function() {
+      document.body.innerHTML = document.querySelector('.container').outerHTML;
+    }, 3000);
+  </script>
+</body>
+</html>
