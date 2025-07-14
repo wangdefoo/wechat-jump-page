@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>微信跳转中间页</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 40px; background: #f2f2f2; }
+    .card { background: white; padding: 20px; margin: 20px auto; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); max-width: 400px; }
+    .btn { display: inline-block; margin-top: 10px; padding: 10px 20px; background: #007aff; color: white; border-radius: 5px; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>淘宝口令</h2>
+    <p>口令：₴6jub41iOaCR</p>
+    <a class="btn" onclick="copyCode('₴6jub41iOaCR')">复制并打开淘宝</a>
+  </div>
+  <div class="card">
+    <h2>饿了么跳转</h2>
+    <p>链接：mp://tQcLhAxCuPKJ8xF</p>
+    <a class="btn" onclick="copyCode('mp://tQcLhAxCuPKJ8xF')">复制并打开饿了么</a>
+  </div>
+  <script>
+    function copyCode(code) {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(code).then(() => {
+          alert("复制成功，请打开对应App粘贴使用");
+        });
+      } else {
+        alert("复制失败，请手动复制");
+      }
+    }
+  </script>
+</body>
+</html>
