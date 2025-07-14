@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>跳转淘宝App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>
+    const taobaoURL = "tbopen://m.taobao.com/tbopen/index.html?&action=ali.open.nav&module=h5&h5Url=https%3A%2F%2Fm.duanqu.com%2F%3F_ariver_appid%3D8251537%26page%3Dplugin-private%253A%252F%252F2021003183669766%252Fpages%252Fwh-coupon-guide%252Findex%253Ffrom%253Dminiapp.taobao%2526channelInfo%253D%257B%2522subSubChannel%2522%253A%2522miniapp.taobao.et%2522%257D%2526alsc_exsrc%253DES0007485972%2526scene%253D0c1ec3d15b6941c29d8cce4e33e5f8ba";
+
+    window.onload = function () {
+      const ua = navigator.userAgent.toLowerCase();
+      const isWeChat = ua.includes("micromessenger");
+      const isIOS = /iphone|ipad|ipod/.test(ua);
+
+      if (isWeChat || isIOS) {
+        document.getElementById("fallback").style.display = "block";
+        document.getElementById("copylink").innerText = taobaoURL;
+      } else {
+        // 安卓浏览器中跳转
+        window.location.href = taobaoURL;
+        setTimeout(() => {
+          document.getElementById("fallback").style.display = "block";
+          document.getElementById("copylink").innerText = taobaoURL;
+        }, 1500);
+      }
+    };
+  </script>
+</head>
+<body>
+  <div id="fallback" style="display:none;padding:20px;font-size:16px;">
+    如需浏览，请长按网址复制后在浏览器打开：
+    <div style="word-break:break-all;color:#1677ff;font-weight:bold;" id="copylink"></div>
+  </div>
+</body>
+</html>
