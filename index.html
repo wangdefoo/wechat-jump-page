@@ -44,32 +44,47 @@
 
   <div class="card">
     <h2>淘宝限时闪购</h2>
-    <p>复制下方口令并打开淘宝App粘贴使用：</p>
-    <button class="btn" onclick="copyTaobaoCode()">复制淘口令并打开淘宝</button>
+    <p>复制下方口令并跳转至淘宝App：</p>
+    <button class="btn" onclick="copyAndJumpTaobao()">复制淘口令并打开淘宝</button>
   </div>
 
   <div class="card">
     <h2>饿了么外卖优惠</h2>
-    <p>点击下方按钮跳转至饿了么活动页面：</p>
-    <a class="btn" href="https://u.ele.me/klnDnDZF" target="_blank">跳转饿了么</a>
+    <p>点击按钮跳转至饿了么App，如失败请手动打开App领取：</p>
+    <button class="btn" onclick="openElemeApp()">打开饿了么App</button>
   </div>
 
   <div class="card">
-    <h2>美团外卖活动</h2>
-    <p>请点击下方按钮打开微信图文消息中的美团小程序卡片：</p>
-    <img src="https://img.alicdn.com/imgextra/i3/2200641905577/O1CN01mdqzYq1sMUGw44oVD_!!2200641905577.jpg" alt="美团跳转说明图" style="width:100%; border-radius:10px;" />
+    <h2>美团外卖小程序</h2>
+    <p>请在公众号图文中点击下方美团小程序卡片打开：</p>
+    <img src="https://cdn.jsdelivr.net/gh/chatgpt-res/image-hosting/meituan-mini-card.jpg" alt="美团跳转说明图" style="width:100%; border-radius:10px;" />
   </div>
 
   <script>
-    function copyTaobaoCode() {
+    function copyAndJumpTaobao() {
       const code = "₴6jub41iOaCR";
-      if (navigator.clipboard) {
+      const isWechat = /MicroMessenger/i.test(navigator.userAgent);
+      const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+      if (navigator.clipboard && !isIOS && !isWechat) {
         navigator.clipboard.writeText(code).then(() => {
-          alert("复制成功，请打开淘宝App粘贴使用");
+          alert("复制成功，即将打开淘宝App");
           window.location.href = "taobao://";
         });
       } else {
-        alert("复制失败，请长按复制以下内容：₴6jub41iOaCR");
+        alert("请手动长按复制以下淘口令，再打开淘宝App使用：\n" + code);
+      }
+    }
+
+    function openElemeApp() {
+      const isWechat = /MicroMessenger/i.test(navigator.userAgent);
+      const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+      if (!isWechat && !isIOS) {
+        // Android微信外部环境尝试跳转 App
+        window.location.href = "eleme://";
+      } else {
+        alert("请手动打开饿了么App领取优惠");
       }
     }
   </script>
