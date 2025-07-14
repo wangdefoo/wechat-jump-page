@@ -1,37 +1,78 @@
 
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <title>微信跳转中间页</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>优惠跳转中间页</title>
   <style>
-    body { font-family: sans-serif; text-align: center; padding: 40px; background: #f2f2f2; }
-    .card { background: white; padding: 20px; margin: 20px auto; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); max-width: 400px; }
-    .btn { display: inline-block; margin-top: 10px; padding: 10px 20px; background: #007aff; color: white; border-radius: 5px; text-decoration: none; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .card h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    .card p {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 16px;
+      background-color: #ff5000;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
+
   <div class="card">
-    <h2>淘宝口令</h2>
-    <p>口令：₴6jub41iOaCR</p>
-    <a class="btn" onclick="copyCode('₴6jub41iOaCR')">复制并打开淘宝</a>
+    <h2>淘宝限时闪购</h2>
+    <p>复制下方口令并打开淘宝App粘贴使用：</p>
+    <button class="btn" onclick="copyTaobaoCode()">复制淘口令并打开淘宝</button>
   </div>
+
   <div class="card">
-    <h2>饿了么跳转</h2>
-    <p>链接：mp://tQcLhAxCuPKJ8xF</p>
-    <a class="btn" onclick="copyCode('mp://tQcLhAxCuPKJ8xF')">复制并打开饿了么</a>
+    <h2>饿了么外卖优惠</h2>
+    <p>点击下方按钮跳转至饿了么活动页面：</p>
+    <a class="btn" href="https://u.ele.me/klnDnDZF" target="_blank">跳转饿了么</a>
   </div>
+
+  <div class="card">
+    <h2>美团外卖活动</h2>
+    <p>请点击下方按钮打开微信图文消息中的美团小程序卡片：</p>
+    <img src="https://img.alicdn.com/imgextra/i3/2200641905577/O1CN01mdqzYq1sMUGw44oVD_!!2200641905577.jpg" alt="美团跳转说明图" style="width:100%; border-radius:10px;" />
+  </div>
+
   <script>
-    function copyCode(code) {
+    function copyTaobaoCode() {
+      const code = "₴6jub41iOaCR";
       if (navigator.clipboard) {
         navigator.clipboard.writeText(code).then(() => {
-          alert("复制成功，请打开对应App粘贴使用");
+          alert("复制成功，请打开淘宝App粘贴使用");
+          window.location.href = "taobao://";
         });
       } else {
-        alert("复制失败，请手动复制");
+        alert("复制失败，请长按复制以下内容：₴6jub41iOaCR");
       }
     }
   </script>
+
 </body>
 </html>
