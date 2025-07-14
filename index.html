@@ -1,93 +1,67 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>优惠跳转中间页</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>跳转中间页导航</title>
   <style>
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: #f7f7f7;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      background: #f9f9f9;
       margin: 0;
-      padding: 20px;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 30px;
+    }
+    .card-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 400px;
+      margin: auto;
     }
     .card {
       background: white;
-      border-radius: 10px;
       padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      text-decoration: none;
+      color: #333;
+      transition: transform 0.2s ease;
+    }
+    .card:hover {
+      transform: scale(1.03);
     }
     .card h2 {
+      margin: 0 0 10px;
       font-size: 18px;
-      margin-bottom: 10px;
     }
     .card p {
+      margin: 0;
       font-size: 14px;
-      margin-bottom: 10px;
-    }
-    .btn {
-      display: inline-block;
-      padding: 10px 16px;
-      background-color: #ff5000;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-size: 16px;
-      cursor: pointer;
-      text-decoration: none;
+      color: #666;
     }
   </style>
 </head>
 <body>
-
-  <div class="card">
-    <h2>淘宝限时闪购</h2>
-    <p>复制下方口令并跳转至淘宝App：</p>
-    <button class="btn" onclick="copyAndJumpTaobao()">复制淘口令并打开淘宝</button>
+  <h1>选择你要跳转的平台</h1>
+  <div class="card-container">
+    <a href="/pages/taobao-jump-page.html" class="card">
+      <h2>淘宝闪购</h2>
+      <p>点击领取优惠，自动跳转淘宝 App</p>
+    </a>
+    <a href="/pages/eleme-jump-page.html" class="card">
+      <h2>饿了么红包</h2>
+      <p>自动跳转领取页面，唤起饿了么 App</p>
+    </a>
+    <a href="/pages/meituan-guide-page.html" class="card">
+      <h2>美团红包</h2>
+      <p>请返回公众号点击美团小程序卡片</p>
+    </a>
   </div>
-
-  <div class="card">
-    <h2>饿了么外卖优惠</h2>
-    <p>点击按钮跳转至饿了么App，如失败请手动打开App领取：</p>
-    <button class="btn" onclick="openElemeApp()">打开饿了么App</button>
-  </div>
-
-  <div class="card">
-    <h2>美团外卖小程序</h2>
-    <p>请在公众号图文中点击下方美团小程序卡片打开：</p>
-    <img src="https://cdn.jsdelivr.net/gh/chatgpt-res/image-hosting/meituan-mini-card.jpg" alt="美团跳转说明图" style="width:100%; border-radius:10px;" />
-  </div>
-
-  <script>
-    function copyAndJumpTaobao() {
-      const code = "₴6jub41iOaCR";
-      const isWechat = /MicroMessenger/i.test(navigator.userAgent);
-      const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-      if (navigator.clipboard && !isIOS && !isWechat) {
-        navigator.clipboard.writeText(code).then(() => {
-          alert("复制成功，即将打开淘宝App");
-          window.location.href = "taobao://";
-        });
-      } else {
-        alert("请手动长按复制以下淘口令，再打开淘宝App使用：\n" + code);
-      }
-    }
-
-    function openElemeApp() {
-      const isWechat = /MicroMessenger/i.test(navigator.userAgent);
-      const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-      if (!isWechat && !isIOS) {
-        // Android微信外部环境尝试跳转 App
-        window.location.href = "eleme://";
-      } else {
-        alert("请手动打开饿了么App领取优惠");
-      }
-    }
-  </script>
-
 </body>
 </html>
