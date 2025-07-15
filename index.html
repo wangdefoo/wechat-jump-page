@@ -3,65 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>跳转中间页导航</title>
+  <title>中间页跳转演示</title>
   <style>
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial;
       background: #f9f9f9;
-      margin: 0;
-      padding: 40px 20px;
       text-align: center;
+      padding: 2rem;
     }
     h1 {
-      font-size: 24px;
+      font-size: 1.5rem;
       color: #333;
-      margin-bottom: 30px;
     }
-    .card-container {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      max-width: 400px;
-      margin: auto;
-    }
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    .btn {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      background-color: #ff5000;
+      color: white;
+      font-size: 1rem;
       text-decoration: none;
-      color: #333;
-      transition: transform 0.2s ease;
+      border-radius: 0.5rem;
     }
-    .card:hover {
-      transform: scale(1.03);
-    }
-    .card h2 {
-      margin: 0 0 10px;
-      font-size: 18px;
-    }
-    .card p {
-      margin: 0;
-      font-size: 14px;
-      color: #666;
+    .tip {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #999;
     }
   </style>
 </head>
 <body>
-  <h1>选择你要跳转的平台</h1>
-  <div class="card-container">
-    <a href="/pages/taobao-jump-page.html" class="card">
-      <h2>淘宝闪购</h2>
-      <p>点击领取优惠，自动跳转淘宝 App</p>
-    </a>
-    <a href="/pages/eleme-jump-page.html" class="card">
-      <h2>饿了么红包</h2>
-      <p>自动跳转领取页面，唤起饿了么 App</p>
-    </a>
-    <a href="/pages/meituan-guide-page.html" class="card">
-      <h2>美团红包</h2>
-      <p>请返回公众号点击美团小程序卡片</p>
-    </a>
-  </div>
+  <h1>淘宝闪购跳转演示</h1>
+  <a class="btn" href="tbopen://m.taobao.com/tbopen/index.html?&action=ali.open.nav&module=h5&h5Url=https%3A%2F%2Fm.duanqu.com%2F%3F_ariver_appid%3D8251537%26page%3Dplugin-private%253A%252F%252F2021003183669766%252Fpages%252Fwh-coupon-guide%252Findex%253Ffrom%253Dminiapp.taobao%2526channelInfo%253D%257B%2522subSubChannel%2522%253A%2522miniapp.taobao.et%2522%257D%2526alsc_exsrc%253DES0007485972%2526scene%253D0c1ec3d15b6941c29d8cce4e33e5f8ba">
+    立即打开淘宝领取红包
+  </a>
+  <p class="tip">若未跳转，请手动复制链接并在浏览器中打开</p>
 </body>
 </html>
