@@ -3,40 +3,82 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>中间页跳转演示</title>
+  <title>淘宝红包跳转中间页</title>
   <style>
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Arial;
-      background: #f9f9f9;
-      text-align: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background: #f7f7f7;
       padding: 2rem;
+      text-align: center;
     }
     h1 {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       color: #333;
+    }
+    .jump-box {
+      margin-top: 2rem;
+      background: #fff;
+      padding: 2rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
     }
     .btn {
       display: inline-block;
-      margin-top: 2rem;
-      padding: 1rem 2rem;
+      margin-top: 1rem;
+      padding: 0.8rem 1.8rem;
       background-color: #ff5000;
       color: white;
       font-size: 1rem;
+      border: none;
+      border-radius: 8px;
       text-decoration: none;
-      border-radius: 0.5rem;
     }
-    .tip {
+    .fallback {
+      display: none;
+      font-size: 0.85rem;
+      color: #666;
       margin-top: 2rem;
-      font-size: 0.9rem;
-      color: #999;
+      word-break: break-all;
     }
   </style>
 </head>
 <body>
-  <h1>淘宝闪购跳转演示</h1>
-  <a class="btn" href="tbopen://m.taobao.com/tbopen/index.html?&action=ali.open.nav&module=h5&h5Url=https%3A%2F%2Fm.duanqu.com%2F%3F_ariver_appid%3D8251537%26page%3Dplugin-private%253A%252F%252F2021003183669766%252Fpages%252Fwh-coupon-guide%252Findex%253Ffrom%253Dminiapp.taobao%2526channelInfo%253D%257B%2522subSubChannel%2522%253A%2522miniapp.taobao.et%2522%257D%2526alsc_exsrc%253DES0007485972%2526scene%253D0c1ec3d15b6941c29d8cce4e33e5f8ba">
-    立即打开淘宝领取红包
-  </a>
-  <p class="tip">若未跳转，请手动复制链接并在浏览器中打开</p>
+  <h1>淘宝闪购福利领取中...</h1>
+
+  <div class="jump-box">
+    <p>如未自动跳转，请点击下方按钮</p>
+    <a id="openTaobao" class="btn" href="tbopen://m.taobao.com/tbopen/index.html?&action=ali.open.nav&module=h5&h5Url=https%3A%2F%2Fm.duanqu.com%2F%3F_ariver_appid%3D8251537%26page%3Dplugin-private%253A%252F%252F2021003183669766%252Fpages%252Fwh-coupon-guide%252Findex%253Ffrom%253Dminiapp.taobao%2526channelInfo%253D%257B%2522subSubChannel%2522%253A%2522miniapp.taobao.et%2522%257D%2526alsc_exsrc%253DES0007485972%2526scene%253D0c1ec3d15b6941c29d8cce4e33e5f8ba">
+      立即打开淘宝 App
+    </a>
+
+    <div class="fallback" id="fallback">
+      如无法跳转，请复制以下链接在浏览器中打开：<br>
+      <span id="copyLink">tbopen://m.taobao.com/tbopen/index.html?...（省略）</span>
+    </div>
+  </div>
+
+  <script>
+    function isWeChat() {
+      return /MicroMessenger/i.test(navigator.userAgent);
+    }
+
+    function isIOS() {
+      return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    }
+
+    function tryJump() {
+      const link = document.getElementById('openTaobao');
+      if (!isIOS()) {
+        // 安卓可以自动跳转
+        window.location.href = link.href;
+      } else {
+        // iOS 引导点击
+        document.getElementById('fallback').style.display = 'block';
+      }
+    }
+
+    // 自动尝试跳转
+    setTimeout(tryJump, 800);
+  </script>
 </body>
 </html>
